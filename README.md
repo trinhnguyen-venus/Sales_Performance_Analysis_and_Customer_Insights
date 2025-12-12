@@ -65,7 +65,7 @@ This script includes:
 - Window function–based KPIs
 The queries are modular and can be run independently.
 
-##### 4. Generate Reporting Views
+#### 4. Generate Reporting Views
 
 Run:
 
