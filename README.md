@@ -1,99 +1,125 @@
-# 📊 SQL Sales Analysis Project
+# 📊 Sales Performance Analysis & Customer Insights (SQL)
 
-## Skills Demonstrated
+## 1. Project Context
 
-SQL Fundamentals – database creation, schema design
-Data Warehouse Concepts – fact & dimension tables
-Data Loading – BULK INSERT
-Analytical SQL – window functions, CTEs, segmentation
-Reporting Views – customer and product analytical models
+This project analyzes historical sales data to understand how the business grows over time, which products drive revenue, and how customer value is distributed.
 
-## Project Overview
-This project analyzes sales, customer behavior, and product performance using SQL Server.
-The dataset follows a simple Data Warehouse model with fact and dimension tables.
-The analysis includes time-based trends, customer segmentation, product evaluation, and performance metrics.
+The focus is on business performance, not technical complexity.
+SQL is used as a tool to transform raw transactional data into clear insights that support decision-making.
 
-The project includes:
+## 2. Business Questions
 
-- Database and schema setup
-- Data loading using BULK INSERT
-- Sales performance analysis queries
-- Customer report view (behavior, segments, KPIs)
-- Product report view (performance tiers, metrics, KPIs)
+The analysis is designed to answer practical questions:
 
-##  How It Works
-This project is executed entirely inside Microsoft SQL Server.
-To run the analysis from start to finish, follow these steps:
+1. How has sales performance evolved over time?
+2. Is growth driven by more customers, higher purchase volume, or both?
+3. Which products and categories contribute most to revenue?
+4. How concentrated is the revenue base?
+5. Which customer groups generate long-term value?
 
-#### 1. Prepare the Dataset
+##  3. Analytical Approach
 
-All CSV files are stored in the /dataset folder:
-gold.dim_customers.csv – customer attributes
-gold.dim_products.csv – product details
-gold.fact_sales.csv – transaction-level sales data
-Download the repository. You may need to update the file paths in the script depending on your directory.
+The analysis follows a clear and structured workflow:
 
-#### 2. Create Schema and Tables
+- Build a clean fact–dimension data structure
+- Analyze sales trends at monthly and yearly levels
+- Evaluate product and category contribution
+- Segment customers based on purchase history and spending
+- Consolidate findings into reusable reporting views
 
-##### ➡️ Option A – Use the provided setup script (recommended)
+The goal is to understand where growth comes from and where risks may exist.
 
-Run the script: Scripts/01_setup_and_load.sql
 
-⚠️ You may need to update the CSV file paths to match the location of the datasets/ folder on your machine.
+## 4. Key Insights
+### 4.1 Sales growth is driven by real demand
 
-##### ➡️ Option B – Create the database manually
+- Sales show a strong **upward trend from 2011 to 2013**, with **2013 as the peak year**.
+- Monthly sales increased from around **$400K–$700K** in earlier years to over $1.5M in multiple months of 2013.
+- Growth is supported by increases in both **active customers and total quantity sold**.
 
-If preferred, you may:
+**Insight:**
 
-1. Create a new database in SSMS
+Sales growth reflects genuine demand expansion rather than short-term price effects.
 
-2. Import each CSV using Flat File Import
 
-This method is slower but helpful for users unfamiliar with BULK INSERT.
+### 4.2 Revenue is heavily concentrated in one category
 
-#### 3. Run the Analysis Scripts
+- **Bikes account for over 96% of total revenue.**
+- Accessories and Clothing together contribute less than 4%.
 
-Execute: **Scripts/02_sales_analysis.sql**
+**Insight:**
 
-This script includes:
+While Bikes are a strong core product line, the business shows **high dependency on a single category**, creating long-term risk if demand shifts.
 
-- Monthly and yearly sales trends
-- Customer behavior segmentation
-- Product-level performance
-- Category contribution analysis
-- Cost-range product grouping
-- Window function–based KPIs
-The queries are modular and can be run independently.
 
-#### 4. Generate Reporting Views
+### 4.3 Product cost does not fully explain performance
 
-Run:
+- Most products fall into low to mid cost ranges.
+- Revenue is not evenly distributed across products within the same cost range.
 
-- **03_customer_report.sql** → creates gold.report_customers
+**Insight:**
 
-- **04_product_report.sql** → creates gold.report_products
+Demand and category relevance matter more than price alone in driving revenue.
 
-These views consolidate the entire dataset into clean, ready-to-use outputs for BI dashboards or further
+### 4.4 Customer value is unevenly distributed
+
+- The customer base is dominated by new customers.
+- Regular and VIP customers form a smaller group but represent the core long-term value segment.
+
+**Insight:**
+
+Future growth depends more on **retention and conversion** than on continued acquisition alone.
+
+## 5. Overall Observation
+
+The business demonstrates strong growth driven by:
+
+- A small set of high-performing products
+- A limited group of loyal, high-value customers
+
+At the same time, this creates concentration risks that should be actively managed.
+
+## 6. Recommendations
+
+Based on the analysis:
+
+1. Reduce reliance on a single product category by expanding contribution from secondary categories.
+2. Strengthen retention strategies for high-value customers.
+3. Focus on converting new customers into regular and long-term buyers.
+4. Monitor category concentration as a key business risk indicator.
+
+## 6. How It Works
+
+This project runs entirely in Microsoft SQL Server.
+
+1. Raw CSV files are stored in the datasets/ folder
+2. The setup script creates the database structure and loads all data (CSV paths in BULK INSERT may need adjustment based on local setup)
+3. Analytical queries explore trends, segmentation, and performance
+4. Reporting views consolidate insights into query-ready outputs
+
+All scripts are modular and can be executed step by step.
+
 
 ## 📂 Files Included
 
-- **01_setup_and_load.sql** – Creates database, schema, tables, and loads CSV files using BULK INSERT
-- **02_sales_analysis.sql** – Time analysis, category contribution, product cost segmentation, customer segmentation
-- **03_customer_report.sql** – Full customer analytical report (orders, spending, recency, segments)
-- **04_product_report.sql** – Full product analytical report (sales, customers, profitability, performance tiers)
-- **Datasets (.csv)** – Source data for dim_customers, dim_products, and fact_sales
-- **README.md** – Project explanation
+Datasets/
+    - `gold.dim_customers.csv` – customer attributes
+    - `gold.dim_products.csv` – product information
+    - `gold.fact_sales.csv` – transaction-level sales data
+
+Scripts/
+
+    - `01_setup_and_load.sql` – database setup and data loading
+    - `02_sales_analysis.sql` – core analytical queries
+    - `03_customer_report.sql` – customer reporting view
+    - `04_product_report.sql` – product reporting view
 
 
-## 📌 Notes
-
-Paths in BULK INSERT may need to be updated depending on your local folder structure
-This project runs on Microsoft SQL Server
-Views can be queried directly after executing all scripts
+- `README.md` – Project explanation
 
 ## Author
 
-Trinh Nguyen
+**Trinh Nguyen**
 
 📧 Contact: ng.trinh3023@gmail.com
 
